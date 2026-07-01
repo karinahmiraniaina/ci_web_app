@@ -10,21 +10,21 @@ jobs:
   buid-and-push:
     runs-on: ubuntu-latest
     steps:
-      _name: checkout code 
-      _uses: actions/checkout@v3
+      - name: checkout code 
+      - uses: actions/checkout@v3
 
-      _name: Setup docker buildx
-      _uses: docker/setup-buildx-action@v3   
+      - name: Setup docker buildx
+      - uses: docker/setup-buildx-action@v3   
 
-      _name: Login to docker hub 
-      _users: docker/login-action@v2
-      _with:
+      - name: Login to docker hub 
+      - users: docker/login-action@v2
+      - with:
         username: ${{secrets.DOCKER_USERNAME}}
         password: ${{secrets.DOCKER_PASSWORD}}
 
-      _name: build and push docker image
-      _uses: docker/build-push-action@v4
-      _with:
+      - name: build and push docker image
+      - uses: docker/build-push-action@v4
+      - with:
         contest: .
         push: true
         tag: | 
